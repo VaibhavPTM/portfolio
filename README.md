@@ -43,13 +43,22 @@ The project is set up for two free hosting options.
 
 ### Option 1: Vercel (recommended)
 
+**A. Deploy from your terminal (one-time):**
+
 1. Create a free account at [vercel.com](https://vercel.com).
 2. In the project folder, run:
    ```bash
-   npx vercel
+   npx vercel login
+   npx vercel --prod
    ```
-3. Log in when prompted and follow the steps. Vercel will give you a live URL (e.g. `https://portfolio-xxx.vercel.app`).
-4. For production: `npm run deploy` or `npx vercel --prod`.
+3. Log in when prompted. Vercel will give you a live URL (e.g. `https://portfolio-xxx.vercel.app`).
+
+**B. Auto-deploy from GitHub (no CLI):**
+
+1. Go to [vercel.com](https://vercel.com) → **Add New…** → **Project**.
+2. Import your GitHub repo (`VaibhavPTM/portfolio`).
+3. Vercel detects Vite; keep **Build Command**: `npm run build`, **Output Directory**: `dist`.
+4. Click **Deploy**. Every push to `main` will auto-deploy.
 
 ### Option 2: GitHub Pages
 
