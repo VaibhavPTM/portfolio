@@ -35,7 +35,8 @@ export default function Nav() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="font-display font-bold text-xl text-[var(--color-text)] tracking-tight">
+        <Link to="/" className="font-display font-bold text-xl text-[var(--color-text)] tracking-tight flex items-center gap-2">
+          <img src="/favicon.svg" alt="" className="w-7 h-7" aria-hidden />
           Vaibhav
         </Link>
 
