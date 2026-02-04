@@ -2,25 +2,18 @@ import { motion } from 'framer-motion'
 
 const PROJECTS = [
   {
-    title: 'Project One',
-    description: 'A short description of what this project does—tech used and the problem it solves.',
-    tags: ['React', 'Tailwind', 'Vite'],
-    link: '#',
+    title: 'PostWave',
+    description: 'Reddit-like community platform built with Spring Boot and MySQL. JWT auth, REST APIs; users can create/join communities, post articles, upvote/downvote, comment, and save posts.',
+    tags: ['Spring Boot', 'Java', 'MySQL', 'REST API', 'JWT'],
+    link: 'https://github.com/VaibhavPTM/skill-sync',
     external: true,
   },
   {
-    title: 'Project Two',
-    description: 'Another project: focus on impact and outcome. Keep it concise and scannable.',
-    tags: ['Node.js', 'API', 'Database'],
+    title: 'JobBuddy',
+    description: 'Job posting and matching app with Spring Boot and MySQL. Skill-based search, rating system, request/accept workflows, and integrated chat for employer–job seeker interaction.',
+    tags: ['Spring Boot', 'Java', 'MySQL', 'REST API'],
     link: '#',
-    external: true,
-  },
-  {
-    title: 'Project Three',
-    description: 'Third project to show range—could be open source, side project, or work sample.',
-    tags: ['TypeScript', 'Figma'],
-    link: '#',
-    external: true,
+    external: false,
   },
 ]
 

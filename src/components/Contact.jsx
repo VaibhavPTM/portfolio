@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const LINKS = [
-  { label: 'Email', href: 'mailto:you@example.com', icon: 'email', external: false },
-  { label: 'GitHub', href: 'https://github.com', icon: 'github', external: true },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin', external: true },
-  { label: 'Twitter', href: 'https://twitter.com', icon: 'twitter', external: true },
+  { label: 'Email', href: 'mailto:vadadoriyavaibhav454@gmail.com', icon: 'email', external: false },
+  { label: 'GitHub', href: 'https://github.com/VaibhavPTM', icon: 'github', external: true },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vaibhav-vadadoriya-7657531ba/', icon: 'linkedin', external: true },
+  { label: 'Phone', href: 'tel:+917874989057', icon: 'phone', external: false },
 ]
 
 const Icon = ({ name, className }) => {
@@ -31,6 +31,12 @@ const Icon = ({ name, className }) => {
     return (
       <svg className={c} fill="currentColor" viewBox="0 0 24 24">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    )
+  if (name === 'phone')
+    return (
+      <svg className={c} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
       </svg>
     )
   return null

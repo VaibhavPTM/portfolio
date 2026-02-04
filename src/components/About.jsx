@@ -21,12 +21,10 @@ export default function About() {
           className="space-y-4 text-zinc-400 text-lg leading-relaxed"
         >
           <p>
-            I'm a developer who cares about clean code, performance, and user experience. I enjoy turning ideas into
-            real products—from concept to deployment.
+            Results-driven Software Engineer with 1.5+ years of hands-on experience designing, developing, and optimizing scalable systems and AI-driven platforms. I build high-performance microservices and integrate technologies like Kafka, gRPC, GraphQL, and Redis.
           </p>
           <p>
-            When I'm not coding, I like to stay curious: reading, experimenting with new tools, and contributing to
-            open source when I can.
+            Strong foundation in competitive programming with ACM ICPC participation and top rankings on Codeforces, CodeChef, and LeetCode. I enjoy fast-paced environments, driving innovation, and ensuring system reliability at scale.
           </p>
         </motion.div>
       </div>

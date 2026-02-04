@@ -19,7 +19,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="font-display font-bold text-5xl sm:text-6xl md:text-7xl text-[var(--color-text)] tracking-tight mb-4"
         >
-          Your Name
+          Vaibhav Vadadoriya
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
@@ -27,7 +27,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-xl sm:text-2xl text-zinc-400 max-w-2xl mx-auto mb-10"
         >
-          I build interfaces & experiences that are fast, accessible, and delightful.
+          Software Engineer building scalable systems & AI-driven platforms. Microservices, algorithms & high-performance systems.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

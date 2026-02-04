@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const LINKS = [
   { label: 'Home', href: '#hero' },
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
@@ -12,12 +14,16 @@ const LINKS = [
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const isValentine = location.pathname === '/valentine'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  if (isValentine) return null
 
   return (
     <motion.header
@@ -29,9 +35,9 @@ export default function Nav() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#hero" className="font-display font-bold text-xl text-[var(--color-text)] tracking-tight">
-          Portfolio
-        </a>
+        <Link to="/" className="font-display font-bold text-xl text-[var(--color-text)] tracking-tight">
+          Vaibhav
+        </Link>
 
         <ul className="hidden md:flex items-center gap-8">
           {LINKS.map(({ label, href }) => (
@@ -44,6 +50,14 @@ export default function Nav() {
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              to="/valentine"
+              className="text-sm text-pink-400 hover:text-pink-300 transition-colors flex items-center gap-1"
+            >
+              <span aria-hidden>♥</span> Valentine
+            </Link>
+          </li>
         </ul>
 
         <button
@@ -82,6 +96,15 @@ export default function Nav() {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/valentine"
+                  className="block text-pink-400 hover:text-pink-300 transition-colors"
+                  onClick={() => setOpen(false)}
+                >
+                  ♥ Valentine
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}

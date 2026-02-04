@@ -1,14 +1,28 @@
 import { motion } from 'framer-motion'
 
 const SKILLS = [
-  { name: 'React', category: 'Frontend' },
-  { name: 'JavaScript / TypeScript', category: 'Language' },
-  { name: 'Node.js', category: 'Backend' },
-  { name: 'Tailwind CSS', category: 'Styling' },
-  { name: 'Vite', category: 'Tooling' },
-  { name: 'Git', category: 'Tooling' },
-  { name: 'REST APIs', category: 'Backend' },
-  { name: 'Figma', category: 'Design' },
+  'Java',
+  'C++',
+  'C',
+  'Go',
+  'SQL / NoSQL',
+  'Spring Boot',
+  'REST APIs',
+  'GraphQL',
+  'Kafka',
+  'gRPC',
+  'Redis',
+  'MongoDB',
+  'Elasticsearch',
+  'Docker',
+  'Git',
+  'IntelliJ IDEA',
+  'Postman',
+  'SFTP',
+  'Competitive Programming',
+  'Data Structures',
+  'Algorithm Design',
+  'Problem Solving',
 ]
 
 const container = {
@@ -46,11 +60,11 @@ export default function Skills() {
         >
           {SKILLS.map((skill) => (
             <motion.li
-              key={skill.name}
+              key={skill}
               variants={item}
               className="px-4 py-2 rounded-lg bg-[var(--color-surface-elevated)] border border-[var(--color-border)] text-zinc-300 text-sm font-medium hover:border-[var(--color-accent)]/50 hover:text-[var(--color-accent)] transition-colors"
             >
-              {skill.name}
+              {skill}
             </motion.li>
           ))}
         </motion.ul>
