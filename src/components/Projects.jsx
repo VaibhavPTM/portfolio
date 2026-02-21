@@ -32,14 +32,22 @@ const card = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-6">
+    <section id="projects" className="py-28 px-6 relative">
       <div className="max-w-4xl mx-auto">
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          className="section-label"
+        >
+          04 — Projects
+        </motion.span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5 }}
-          className="font-display font-bold text-3xl sm:text-4xl text-[var(--color-text)] mb-10"
+          className="font-display font-bold text-3xl sm:text-4xl text-[var(--color-text)] mb-12"
         >
           Selected projects
         </motion.h2>
@@ -48,23 +56,26 @@ export default function Projects() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-6 sm:grid-cols-2"
         >
-          {PROJECTS.map((project) => (
+          {PROJECTS.map((project, index) => (
             <motion.article
               key={project.title}
               variants={card}
-              className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 hover:border-[var(--color-accent)]/50 transition-colors"
+              className="group card-hover rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 hover:border-[var(--color-accent)]/50 relative overflow-hidden"
             >
-              <h3 className="font-display font-semibold text-lg text-[var(--color-text)] mb-2 group-hover:text-[var(--color-accent)] transition-colors">
+              <div className="absolute top-4 right-4 text-4xl font-display font-bold text-[var(--color-surface-elevated)]/80">
+                0{index + 1}
+              </div>
+              <h3 className="font-display font-semibold text-lg text-[var(--color-text)] mb-2 group-hover:text-[var(--color-accent)] transition-colors pr-10">
                 {project.title}
               </h3>
               <p className="text-zinc-400 text-sm leading-relaxed mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-5">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-2 py-0.5 rounded bg-[var(--color-surface-elevated)] text-zinc-500"
+                    className="text-xs px-2.5 py-1 rounded-md bg-[var(--color-surface-elevated)]/80 text-zinc-500 border border-[var(--color-border)]/50"
                   >
                     {tag}
                   </span>
@@ -74,7 +85,7 @@ export default function Projects() {
                 href={project.link}
                 target={project.external ? '_blank' : undefined}
                 rel={project.external ? 'noopener noreferrer' : undefined}
-                className="inline-flex items-center gap-1 text-sm text-[var(--color-accent)] hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent)] hover:gap-3 transition-all"
               >
                 View project
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

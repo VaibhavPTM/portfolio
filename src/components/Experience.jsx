@@ -34,51 +34,67 @@ const container = {
 }
 
 const item = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, x: -16 },
+  show: { opacity: 1, x: 0 },
 }
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6">
+    <section id="experience" className="py-28 px-6 relative">
       <div className="max-w-4xl mx-auto">
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          className="section-label"
+        >
+          02 — Experience
+        </motion.span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5 }}
-          className="font-display font-bold text-3xl sm:text-4xl text-[var(--color-text)] mb-10"
+          className="font-display font-bold text-3xl sm:text-4xl text-[var(--color-text)] mb-12"
         >
           Experience
         </motion.h2>
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
-          className="space-y-10"
-        >
-          {JOBS.map((job) => (
-            <motion.article
-              key={job.company}
-              variants={item}
-              className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 hover:border-[var(--color-accent)]/30 transition-colors"
-            >
-              <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
-                <h3 className="font-display font-semibold text-lg text-[var(--color-text)]">
-                  {job.company}
-                </h3>
-                <span className="text-sm text-[var(--color-accent)]">{job.period}</span>
-              </div>
-              <p className="text-zinc-400 text-sm mb-4">{job.role}</p>
-              <ul className="space-y-2 text-zinc-400 text-sm leading-relaxed list-disc list-inside">
-                {job.bullets.map((bullet, i) => (
-                  <li key={i}>{bullet}</li>
-                ))}
-              </ul>
-            </motion.article>
-          ))}
-        </motion.div>
+
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--color-accent)]/50 via-[var(--color-border)] to-transparent hidden sm:block" />
+
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+            className="space-y-8"
+          >
+            {JOBS.map((job, index) => (
+              <motion.article
+                key={job.company}
+                variants={item}
+                className="card-hover relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 pl-8 sm:pl-10 hover:border-[var(--color-accent)]/40"
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-0 top-8 -translate-x-1/2 w-3 h-3 rounded-full bg-[var(--color-accent)] border-4 border-[var(--color-bg)] hidden sm:block" />
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
+                  <h3 className="font-display font-semibold text-lg text-[var(--color-text)]">
+                    {job.company}
+                  </h3>
+                  <span className="text-sm font-medium text-[var(--color-accent)]">{job.period}</span>
+                </div>
+                <p className="text-zinc-400 text-sm mb-4">{job.role}</p>
+                <ul className="space-y-2 text-zinc-400 text-sm leading-relaxed list-disc list-inside">
+                  {job.bullets.map((bullet, i) => (
+                    <li key={i}>{bullet}</li>
+                  ))}
+                </ul>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   )

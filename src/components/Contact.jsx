@@ -42,10 +42,31 @@ const Icon = ({ name, className }) => {
   return null
 }
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+}
+
+const item = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0 },
+}
+
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 px-6 bg-[var(--color-surface)]/50">
+    <section id="contact" className="py-28 px-6 bg-[var(--color-surface)]/40 relative">
       <div className="max-w-4xl mx-auto text-center">
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="section-label"
+        >
+          05 — Contact
+        </motion.span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -60,28 +81,31 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-zinc-400 text-lg mb-10 max-w-xl mx-auto"
+          className="text-zinc-400 text-lg mb-12 max-w-xl mx-auto"
         >
           I'm open to new opportunities and conversations. Say hi—I'll do my best to reply.
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={container}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-6"
+          className="flex flex-wrap justify-center gap-4"
         >
           {LINKS.map(({ label, href, icon, external }) => (
-            <a
+            <motion.a
               key={label}
               href={href}
               target={external ? '_blank' : undefined}
               rel={external ? 'noopener noreferrer' : undefined}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors"
+              variants={item}
+              className="card-hover inline-flex items-center gap-3 px-6 py-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors min-w-[160px] justify-center"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Icon name={icon} className="w-5 h-5 text-[var(--color-accent)]" />
+              <Icon name={icon} className="w-5 h-5 text-[var(--color-accent)] shrink-0" />
               {label}
-            </a>
+            </motion.a>
           ))}
         </motion.div>
       </div>
