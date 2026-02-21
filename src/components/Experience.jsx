@@ -42,14 +42,6 @@ export default function Experience() {
   return (
     <section id="experience" className="py-28 px-6 relative">
       <div className="max-w-4xl mx-auto">
-        <motion.span
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          className="section-label"
-        >
-          02 — Experience
-        </motion.span>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
