@@ -14,10 +14,22 @@ const LINKS = [
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('hero')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40)
+      const sections = LINKS.map((l) => l.href.slice(1)).filter(Boolean)
+      const current = sections.find((id) => {
+        const el = document.getElementById(id)
+        if (!el) return false
+        const rect = el.getBoundingClientRect()
+        return rect.top <= 120 && rect.bottom >= 120
+      })
+      setActiveSection(current || 'hero')
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -31,36 +43,46 @@ export default function Nav() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="font-display font-bold text-xl text-[var(--color-text)] tracking-tight flex items-center gap-2">
+        <Link
+          to="/"
+          className="font-display font-bold text-xl text-[var(--color-text)] tracking-tight flex items-center gap-2 hover:opacity-90 transition-opacity"
+        >
           <img src="/favicon.svg" alt="" className="w-7 h-7" aria-hidden />
           Vaibhav
         </Link>
 
-        <ul className="hidden md:flex items-center gap-8">
-          {LINKS.map(({ label, href }) => (
-            <li key={href}>
-              <a
-                href={href}
-                className="text-sm text-zinc-400 hover:text-[var(--color-accent)] transition-colors"
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-          <li>
-            <Link
-              to="/valentine"
-              className="text-sm text-pink-400 hover:text-pink-300 transition-colors flex items-center gap-1"
-            >
-              <span aria-hidden>♥</span> Valentine
-            </Link>
-          </li>
+        <ul className="hidden md:flex items-center gap-1">
+          {LINKS.map(({ label, href }) => {
+            const id = href.slice(1) || 'hero'
+            const isActive = activeSection === id
+            return (
+              <li key={href}>
+                <a
+                  href={href}
+                  className={`relative px-3 py-2 text-sm rounded-lg transition-colors ${
+                    isActive
+                      ? 'text-[var(--color-accent)]'
+                      : 'text-zinc-400 hover:text-[var(--color-text)]'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-[var(--color-accent-subtle)] border border-[var(--color-accent)]/20 rounded-lg"
+                      transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
+                    />
+                  )}
+                  <span className="relative">{label}</span>
+                </a>
+              </li>
+            )
+          })}
         </ul>
 
         <button
           type="button"
           aria-label="Toggle menu"
-          className="md:hidden p-2 text-zinc-400 hover:text-white"
+          className="md:hidden p-2.5 rounded-lg text-zinc-400 hover:text-white hover:bg-[var(--color-surface)] transition-colors"
           onClick={() => setOpen(!open)}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,29 +101,21 @@ export default function Nav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-[var(--color-border)] bg-[var(--color-bg)]"
+            transition={{ duration: 0.2 }}
+            className="md:hidden border-t border-[var(--color-border)] bg-[var(--color-bg)]/95 backdrop-blur-md"
           >
-            <ul className="px-6 py-4 flex flex-col gap-4">
+            <ul className="px-6 py-4 flex flex-col gap-1">
               {LINKS.map(({ label, href }) => (
                 <li key={href}>
                   <a
                     href={href}
-                    className="block text-zinc-400 hover:text-[var(--color-accent)] transition-colors"
+                    className="block px-4 py-3 rounded-lg text-zinc-400 hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-subtle)] transition-colors"
                     onClick={() => setOpen(false)}
                   >
                     {label}
                   </a>
                 </li>
               ))}
-              <li>
-                <Link
-                  to="/valentine"
-                  className="block text-pink-400 hover:text-pink-300 transition-colors"
-                  onClick={() => setOpen(false)}
-                >
-                  ♥ Valentine
-                </Link>
-              </li>
             </ul>
           </motion.div>
         )}
