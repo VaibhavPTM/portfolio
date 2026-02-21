@@ -80,21 +80,23 @@ export default function Hero() {
         </motion.div>
 
       </div>
-      <motion.div
+      <motion.a
+        href="#about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
-        className="absolute left-1/2 -translate-x-1/2 bottom-8 flex flex-col items-center gap-2 z-10"
+        className="absolute left-1/2 -translate-x-1/2 bottom-8 flex flex-col items-center gap-2 z-10 cursor-pointer text-zinc-500 hover:text-[var(--color-accent)] transition-colors no-underline"
+        aria-label="Scroll to About"
       >
-        <span className="text-xs text-zinc-500 uppercase tracking-widest">Scroll</span>
+        <span className="text-xs uppercase tracking-widest">Scroll</span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-6 h-10 rounded-full border-2 border-zinc-600 flex justify-center pt-2"
+          className="w-6 h-10 rounded-full border-2 border-current flex justify-center pt-2"
         >
           <motion.span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
         </motion.div>
-      </motion.div>
+      </motion.a>
     </section>
   )
 }
