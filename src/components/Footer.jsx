@@ -13,8 +13,6 @@ export default function Footer() {
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
         <p className="text-zinc-500">
           © {year} <span className="text-zinc-400 font-medium">Vaibhav Vadadoriya</span>
-          <span className="text-zinc-600 mx-1.5">·</span>
-          <span className="text-zinc-500">Built with React + Vite</span>
         </p>
         <a
           href="#hero"
